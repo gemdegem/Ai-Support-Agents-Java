@@ -1,0 +1,66 @@
+Integration Guide — External Systems
+===========================================
+
+HubSpot CRM Integration
+--------------------------
+Our API enables two-way contact synchronization with HubSpot CRM.
+Configuration:
+1. In the admin.example.com panel, go to Settings → Integrations → HubSpot.
+2. Click "Connect" and log in to your HubSpot account.
+3. Select synchronization scopes: Contacts, Companies, Deals.
+4. Set synchronization frequency (every 5 minutes, hourly, manual).
+5. Click "Save & Test" — the system will perform a test synchronization of one contact.
+
+Note: HubSpot integration requires a Pro or Enterprise plan. On the Free plan, the "Connect" button is disabled.
+
+Webhook Configuration
+-----------------------
+Webhooks allow you to receive real-time notifications about events in the system.
+Available event types:
+- user.created — a new user has registered
+- user.updated — user data has been updated
+- payment.completed — payment has been completed
+- payment.failed — payment failed
+- subscription.changed — subscription plan change
+
+Webhook registration:
+1. Go to Settings → Webhooks in the admin panel.
+2. Click "Add Webhook" and provide the endpoint URL (must support HTTPS).
+3. Select the event types you want to receive.
+4. Copy the generated Webhook Secret — needed for signature verification.
+5. Click "Save" — the system will send a test "ping" event.
+
+Webhook payload format (JSON):
+{
+  "event": "payment.completed",
+  "timestamp": "2026-03-14T12:00:00Z",
+  "data": {
+    "paymentId": "PAY-12345",
+    "amount": 99.00,
+    "currency": "PLN",
+    "customerId": "C001"
+  },
+  "signature": "HMAC-SHA256-hash"
+}
+
+Zapier Integration
+--------------------
+Our system supports integration with Zapier through a ready-made connector.
+Available triggers: New User, Payment Received, Subscription Changed.
+Available actions: Create User, Update User Data, Send Notification.
+Configuration: Search for "Example API" in the Zapier App Directory and connect your account using an API key.
+
+Data Export (CSV / JSON)
+-----------------------------
+Data can be exported in bulk in two formats:
+- CSV — for spreadsheet analysis
+- JSON — for importing to other systems
+
+Endpoint: GET /api/v2/export?format=csv&type=users
+Parameters:
+- format: csv or json (required)
+- type: users, payments, subscriptions (required)
+- date_from, date_to: optional date range (ISO 8601 format)
+- limit: maximum number of records (default 1000, max 10000)
+
+Note: Exporting large datasets (over 5000 records) is processed asynchronously. The system will return a task ID, and the result will be available at the /api/v2/export/status/{taskId} endpoint.

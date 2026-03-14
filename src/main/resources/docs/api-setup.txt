@@ -1,0 +1,48 @@
+API Configuration — Quick Start Guide
+===========================================
+
+Prerequisites
+-----------------
+To use our API, you need:
+- A developer account (register at developer.example.com)
+- An API Key (generate in Settings → API Keys)
+- Java 17 or newer / Python 3.10+ / Node.js 18+
+
+Generating an API Key
+----------------------
+1. Log in to the admin panel at admin.example.com.
+2. Go to "Settings" → "API Keys".
+3. Click "Generate New Key" and select the appropriate scope.
+4. Copy the generated key — it is displayed only once.
+5. Save the key as an environment variable: export API_KEY="your-api-key"
+
+Note: API keys are assigned to a specific project. Each project can have a maximum of 5 active keys simultaneously.
+
+Base Endpoint
+---------------
+Send all requests to: https://api.example.com/v2/
+
+Authentication is performed via HTTP header:
+Authorization: Bearer <YOUR_API_KEY>
+
+Request Limits (Rate Limiting)
+------------------------------
+- Free Plan: 100 requests / minute
+- Pro Plan: 1000 requests / minute
+- Enterprise Plan: 10000 requests / minute
+
+When the limit is exceeded, the server returns HTTP 429 (Too Many Requests) with a Retry-After header indicating the waiting time in seconds.
+
+Example request (curl)
+----------------------------
+curl -X GET https://api.example.com/v2/users \
+  -H "Authorization: Bearer $API_KEY" \
+  -H "Content-Type: application/json"
+
+Response Format
+-----------------
+The API always returns data in JSON format. Each response contains a "status" field (success/error) and a "data" field with the results. In case of an error, it also includes an "error" field with a code and description.
+
+API Versioning
+-----------------
+The current version is v2. The older version v1 is marked as deprecated and will be disabled on 2026-06-01. We recommend migrating to v2, as it offers better performance and new endpoints.

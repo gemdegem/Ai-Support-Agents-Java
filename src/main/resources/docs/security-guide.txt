@@ -1,0 +1,55 @@
+API Security Guide
+==============================
+
+Storing API Keys
+--------------------------
+NEVER place API keys directly in source code.
+Recommended storage methods:
+- Environment variables (most common solution)
+- Secret manager (AWS Secrets Manager, HashiCorp Vault, Azure Key Vault)
+- Configuration files outside the repository (added to .gitignore)
+
+Key Rotation
+--------------
+We recommend rotating API keys every 90 days. Procedure:
+1. Generate a new key in the admin.example.com panel.
+2. Update the key across all environments (dev, staging, production).
+3. Test the connection with the new key.
+4. Deactivate the old key after confirming the new one works properly.
+
+Note: The old key remains active for 24 hours after deactivation to allow seamless migration.
+
+Permissions and Scopes (Scopes)
+-------------------------------
+Apply the Principle of Least Privilege.
+Available scopes:
+- read:users — reading user data
+- write:users — creating and modifying users
+- read:data — reading business data
+- write:data — storing business data
+- admin — full access (use only in exceptional situations)
+
+Webhook Security
+-----------------
+Webhooks sent by our API include an HMAC-SHA256 signature in the X-Signature header.
+To verify webhook authenticity:
+1. Retrieve your Webhook Secret from Settings → Webhooks.
+2. Calculate the HMAC-SHA256 of the request body using the Webhook Secret.
+3. Compare the calculated value with the X-Signature header.
+4. Reject the webhook if signatures do not match.
+
+Protection Against Attacks
+----------------------
+Our API has built-in security features:
+- Brute-force attack protection (lockout after 10 failed authentication attempts)
+- WAF (Web Application Firewall) protecting against SQLi, XSS, and other attacks
+- TLS 1.3 encryption for all connections
+- Automatic logging of suspicious activities
+
+Audit and Monitoring
+-------------------
+Each API call is logged with the following data:
+- Timestamp, source IP, endpoint, HTTP method, response code
+- Logs available in admin panel → Audit Logs (stored for 90 days)
+- Option to set email alerts upon anomaly detection
+- Log export to SIEM (Splunk, ELK) via webhook integration

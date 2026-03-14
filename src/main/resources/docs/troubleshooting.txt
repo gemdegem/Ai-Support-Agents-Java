@@ -1,0 +1,58 @@
+Troubleshooting — FAQ
+==============================
+
+Problem: 401 Unauthorized Error
+-------------------------------
+Cause: Invalid or expired API key.
+Solution:
+1. Check if the API key is correctly set as an environment variable.
+2. Verify in the admin.example.com panel if the key has not been deactivated.
+3. Generate a new key if the old one has expired (keys expire after 90 days of inactivity).
+
+Problem: 403 Forbidden Error
+----------------------------
+Cause: The API key lacks sufficient permissions (scope) for the given endpoint.
+Solution:
+1. In Settings → API Keys, check the key's permissions.
+2. Required scopes are: read:users, write:users, read:data, write:data.
+3. Generate a new key with appropriate permissions.
+
+Problem: 429 Too Many Requests Error
+-------------------------------------
+Cause: Rate limit exceeded.
+Solution:
+1. Wait the time indicated in the Retry-After header.
+2. Implement an exponential backoff mechanism in your client.
+3. Consider upgrading your plan (Free → Pro → Enterprise) for higher limits.
+
+Problem: Connection Timeout
+----------------------------
+Cause: The API server is not responding within the designated time.
+Solution:
+1. Set the timeout to at least 30 seconds for standard requests.
+2. For batch queries (processing multiple records), set the timeout to 120 seconds.
+3. Check service status at status.example.com.
+4. If the problem persists, contact technical support: support@example.com.
+
+Problem: Empty Responses (null in the data field)
+----------------------------------------------
+Cause: The request is valid, but no data matches the criteria.
+Solution:
+1. Verify the filtering parameters in the query.
+2. Make sure you are using correct identifiers (IDs).
+3. Check if the data has not been deleted from the system.
+
+Problem: 500 Internal Server Error
+-----------------------------------------
+Cause: Internal API server error.
+Solution:
+1. Try again in a few minutes.
+2. Check the status at status.example.com.
+3. If the error persists, report it to support providing the request identifier (Request-ID from the response header).
+
+Problem: Inconsistent Data in Response
+--------------------------------------
+Cause: Server cache may return outdated data (TTL: 60 seconds).
+Solution:
+1. Add the Cache-Control: no-cache header to the request to force fresh data.
+2. Wait 60 seconds and try again without this header.

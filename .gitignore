@@ -1,0 +1,26 @@
+.env
+*.pem
+*.key
+
+
+.idea/
+*.iml
+*.iws
+.settings/
+.classpath
+.project
+
+target/
+*.jar
+*.war
+*.ear
+*.class
+
+.DS_Store
+Thumbs.db
+
+PLAN PROJEKTU.md
+GEMINI.md
+ARCHITECTURE_AND_RULES.md
+.agents/
+.gemini/
