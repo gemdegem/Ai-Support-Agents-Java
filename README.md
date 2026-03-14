@@ -142,3 +142,6 @@ See [example_conversations.txt](example_conversations.txt) for sample conversati
 
 **Conversation 3: Out-of-Scope Handling & Prompt Injection Defense**
 ![Conversation 3](images/conv3.png)
+**Conversation 4: Switching between technical and billing support**
+![Conversation 4](images/conv4.png)
+![Conversation 4](images/conv5.png)

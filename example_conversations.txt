@@ -116,15 +116,15 @@ Assistant: To configure a webhook in the system, follow these steps:
 
 
 ────────────────────────────────────────────────────────────────────────────────
-  CONVERSATION 4: General Greeting & Capabilities Query
+  CONVERSATION 4: Switching between technical and billing support
 ────────────────────────────────────────────────────────────────────────────────
 
-╔══════════════════════════════════════════════════════╗
+╔╔══════════════════════════════════════════════════════╗
 ║          RAG Chatbot — Technical Assistant           ║
 ║              & Billing Specialist                    ║
 ╠══════════════════════════════════════════════════════╣
-║  Logged in as:     Anna Kowalska                     ║
-║  Customer ID:      C001                              ║
+║  Logged in as:     Jan Nowak                         ║
+║  Customer ID:      C002                              ║
 ╠══════════════════════════════════════════════════════╣
 ║  Type your message and press Enter.                  ║
 ║  Type 'exit' or 'quit' to terminate.                 ║
@@ -132,7 +132,7 @@ Assistant: To configure a webhook in the system, follow these steps:
 
 Assistant: Hi! I am your virtual assistant. I can answer your technical questions or help you with billing and account details. How can I help you today?
 
-You: What can you help me with?
+You: What can i ask about ?
 Assistant is thinking...
 [Orchestrator] Router -> GENERAL
 Assistant: I can help you with two areas:
@@ -143,12 +143,64 @@ Assistant: I can help you with two areas:
 
 Just ask your question and I'll route it to the right specialist!
 
-You: Tell me about the API
+You: Help me with the API
 Assistant is thinking...
 [Orchestrator] Router -> TECHNICAL
-Assistant: Our platform provides a comprehensive API-based service. Our RESTful API (v2) is available at https://api.example.com/v2/ and uses Bearer token authentication. We offer managing users, data, and subscriptions. We provide three subscription tiers: Free (100 requests/minute), Pro (1000 requests/minute), and Enterprise (10000 requests/minute). The API returns data in JSON format.
+Assistant: Our API is a RESTful service (v2) designed for managing users, data, and subscriptions. Here are some key details:
 
+- **Base Endpoint**: You can access our API at `https://api.example.com/v2/`.
+- **Authentication**: We use Bearer token (API Key) for authentication.
+- **Data Format**: The API communicates using JSON for both requests and responses.
 
-================================================================================
-  END OF EXAMPLE CONVERSATIONS
-================================================================================
+To get started, you'll need to have a developer account, generate an API Key, and ensure you are using compatible programming languages (Java 17 or newer, Python 3.10+, or Node.js 18+). If you have specific questions or need assistance with a particular aspect of the API, feel free to ask!
+
+You: What is my current plan?
+Assistant is thinking...
+[Orchestrator] Router -> BILLING
+Assistant: Your current subscription plan is **Basic**. Here are the details:
+
+- **Monthly Price**: 29 PLN
+- **Renewal Date**: May 14, 2026
+- **Status**: Active
+
+If you have any more questions about your plan or need further assistance, feel free to ask!
+
+You: tell me about other subscriptions
+Assistant is thinking...
+[Orchestrator] Router -> TECHNICAL
+Assistant: Our platform offers three subscription tiers to suit different needs:
+
+1. **Free Plan**: 
+   - 100 API requests per minute
+   - Basic features
+
+2. **Pro Plan**: 
+   - 1000 API requests per minute
+   - CRM integrations
+   - Priority support
+
+3. **Enterprise Plan**: 
+   - 10,000 API requests per minute
+   - Full feature set
+   - Dedicated support
+
+If you need more information about a specific plan or how to upgrade, just let me know!
+
+You: show me my billings
+Assistant is thinking...
+[Orchestrator] Router -> BILLING
+Assistant: Here is your billing history:
+
+1. **Invoice Date**: March 1, 2026
+   - **Amount**: 29 PLN
+   - **Status**: PAID
+
+2. **Invoice Date**: February 1, 2026
+   - **Amount**: 29 PLN
+   - **Status**: PAID
+
+3. **Invoice Date**: January 1, 2026
+   - **Amount**: 29 PLN
+   - **Status**: OVERDUE
+
+If you have any questions about these invoices or need further assistance, feel free to ask!
