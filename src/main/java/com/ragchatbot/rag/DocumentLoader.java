@@ -13,6 +13,7 @@ public class DocumentLoader {
     private static final int MIN_CHUNK_LENGTH = 30;
 
     private static final String[] DEFAULT_DOC_FILES = {
+            "docs/system-overview.txt",
             "docs/api-setup.txt",
             "docs/troubleshooting.txt",
             "docs/security-guide.txt",
