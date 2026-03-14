@@ -5,19 +5,19 @@ About the Platform
 --------------------
 Our platform provides a comprehensive API-based service for managing users,
 payments, subscriptions, and integrations with third-party systems.
-It is designed for developers and businesses who need a reliable, secure,
+We designed it for developers and businesses who need a reliable, secure,
 and well-documented API to power their applications.
 
 Key Capabilities
 --------------------
-The platform offers the following core features:
+We offer the following core features:
 
-1. API Access — RESTful API (v2) for managing users, data, and subscriptions.
+1. API Access — Our RESTful API (v2) is available for managing users, data, and subscriptions.
    - Base endpoint: https://api.example.com/v2/
    - Authentication via Bearer token (API Key)
    - JSON request/response format
 
-2. Subscription Plans — three tiers to suit different needs:
+2. Subscription Plans — We offer three tiers to suit your needs:
    - Free Plan: 100 API requests/minute, basic features
    - Pro Plan: 1000 API requests/minute, CRM integrations, priority support
    - Enterprise Plan: 10000 API requests/minute, full feature set, dedicated support
