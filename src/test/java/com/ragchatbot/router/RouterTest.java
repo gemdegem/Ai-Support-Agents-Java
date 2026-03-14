@@ -126,12 +126,12 @@ class RouterTest {
         ConversationMemory contextMemory = new ConversationMemory(8);
         contextMemory.addUserMessage("I have a database configuration problem.");
         contextMemory.addAssistantMessage("[Agent: Technical] Try checking the connection string.");
-        contextMemory.addUserMessage("Thanks. And by the way, how much does a plan upgrade cost?");
+        contextMemory.addUserMessage("Thanks. And by the way, how much will my specific plan upgrade cost me on the next invoice?");
 
         String switchResponse = router.classify(contextMemory);
         System.out.println("Classification after topic change: '" + switchResponse + "'");
         assertEquals("BILLING", switchResponse.trim().toUpperCase(),
-                "After changing topic to billing, Router should return BILLING, received: " + switchResponse);
+                "After changing topic to specific billing, Router should return BILLING, received: " + switchResponse);
     }
 
     private Router createRouterWithFixedResponse(String fixedResponse) {

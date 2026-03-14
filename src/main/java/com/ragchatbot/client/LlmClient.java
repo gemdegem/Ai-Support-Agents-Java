@@ -54,6 +54,7 @@ public class LlmClient {
 
             ObjectNode requestBody = objectMapper.createObjectNode();
             requestBody.put("model", this.model);
+            requestBody.put("temperature", 0.0);
 
             ArrayNode messagesArray = requestBody.putArray("messages");
             ObjectNode messageNode = objectMapper.createObjectNode();
@@ -95,6 +96,7 @@ public class LlmClient {
         try {
             ObjectNode requestBody = objectMapper.createObjectNode();
             requestBody.put("model", this.model);
+            requestBody.put("temperature", 0.0);
             requestBody.set("messages", messagesArray);
 
             if (tools != null && !tools.isEmpty()) {
@@ -112,6 +114,7 @@ public class LlmClient {
     private ObjectNode buildRequestBody(List<ConversationMemory.Message> messages, ArrayNode tools) {
         ObjectNode requestBody = objectMapper.createObjectNode();
         requestBody.put("model", this.model);
+        requestBody.put("temperature", 0.0);
 
         ArrayNode messagesArray = requestBody.putArray("messages");
         for (ConversationMemory.Message msg : messages) {

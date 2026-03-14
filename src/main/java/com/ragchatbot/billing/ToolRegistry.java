@@ -45,8 +45,9 @@ public class ToolRegistry {
         ObjectNode function = MAPPER.createObjectNode();
         function.put("name", "checkPlanAndPricing");
         function.put("description",
-                "Checks the current subscription plan and pricing for the logged-in customer. " +
-                "Use when the user asks about their plan, price, subscription status, or renewal date. " +
+                "Checks the current active subscription plan and pricing ONLY for the logged-in customer. " +
+                "Use when the user asks about THEIR specific plan, THEIR price, subscription status, or renewal date. " +
+                "Do NOT use this to answer general questions about what plans exist in the system. " +
                 "The customer ID is automatically retrieved from the session — do not provide it.");
 
         ObjectNode parameters = MAPPER.createObjectNode();

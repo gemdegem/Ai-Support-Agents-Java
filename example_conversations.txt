@@ -146,7 +146,7 @@ Just ask your question and I'll route it to the right specialist!
 You: Tell me about the API
 Assistant is thinking...
 [Orchestrator] Router -> TECHNICAL
-Assistant: Our platform provides a comprehensive API-based service. The RESTful API (v2) is available at https://api.example.com/v2/ and uses Bearer token authentication. It supports managing users, data, and subscriptions. There are three subscription tiers: Free (100 requests/minute), Pro (1000 requests/minute), and Enterprise (10000 requests/minute). The API returns data in JSON format.
+Assistant: Our platform provides a comprehensive API-based service. Our RESTful API (v2) is available at https://api.example.com/v2/ and uses Bearer token authentication. We offer managing users, data, and subscriptions. We provide three subscription tiers: Free (100 requests/minute), Pro (1000 requests/minute), and Enterprise (10000 requests/minute). The API returns data in JSON format.
 
 
 ================================================================================

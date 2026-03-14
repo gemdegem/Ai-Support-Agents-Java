@@ -14,9 +14,11 @@ public class Router {
 
             Respond with ONE word:
             - TECHNICAL — if the question is about technical support, documentation, API, the platform, configuration, \
-            software issues, errors, or settings. All questions asking "how" or "what is the API" are TECHNICAL.
-            - BILLING — if the question is about payments, invoices, pricing plans, refunds, \
-            subscriptions, or billing account.
+            software issues, errors, settings, AND IF the question is about *general* pricing plans, tiers, or features of plans (e.g. "what plans do you have?"). \
+            All questions asking "how" or "what is the API" are also TECHNICAL.
+            - BILLING — ONLY if the question is about a *specific user's* payments, invoices, refunds, \
+            current subscriptions, or billing account (e.g. "what is my plan?", "my invoice"). \
+            Do NOT route general plan inquiries here.
             - GENERAL — ONLY if the message is a direct greeting (e.g., "hello", "hi") or a meta-question about \
             your capabilities (e.g., "what can you help me with?", "what do you do?"). Do NOT use GENERAL for anything else.
 
