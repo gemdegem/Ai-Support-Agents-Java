@@ -1,0 +1,54 @@
+System Overview — Platform & API
+===========================================
+
+About the Platform
+--------------------
+Our platform provides a comprehensive API-based service for managing users,
+payments, subscriptions, and integrations with third-party systems.
+It is designed for developers and businesses who need a reliable, secure,
+and well-documented API to power their applications.
+
+Key Capabilities
+--------------------
+The platform offers the following core features:
+
+1. API Access — RESTful API (v2) for managing users, data, and subscriptions.
+   - Base endpoint: https://api.example.com/v2/
+   - Authentication via Bearer token (API Key)
+   - JSON request/response format
+
+2. Subscription Plans — three tiers to suit different needs:
+   - Free Plan: 100 API requests/minute, basic features
+   - Pro Plan: 1000 API requests/minute, CRM integrations, priority support
+   - Enterprise Plan: 10000 API requests/minute, full feature set, dedicated support
+
+3. Integrations — connect with external systems:
+   - HubSpot CRM (two-way contact sync, Pro/Enterprise only)
+   - Zapier (triggers and actions via ready-made connector)
+   - Webhooks (real-time event notifications for user, payment, and subscription events)
+
+4. Data Export — bulk export in CSV or JSON format via API endpoint.
+
+5. Security — enterprise-grade security features:
+   - API key management with scopes (read:users, write:users, read:data, write:data, admin)
+   - Key rotation recommended every 90 days
+   - HMAC-SHA256 webhook signature verification
+   - TLS 1.3 encryption, WAF protection, brute-force lockout
+   - Full audit logging with SIEM integration support
+
+6. Billing & Account Management:
+   - Subscription plan management and pricing
+   - Invoice and payment history
+   - Refund request submission
+
+Getting Started
+--------------------
+1. Register a developer account at developer.example.com.
+2. Generate an API key in Settings → API Keys.
+3. Set the key as an environment variable: export API_KEY="your-api-key"
+4. Send your first request to https://api.example.com/v2/
+
+For detailed setup instructions, see the API Configuration guide.
+For troubleshooting common errors (401, 403, 429, 500), see the Troubleshooting guide.
+For integration setup (HubSpot, Webhooks, Zapier), see the Integration guide.
+For security best practices, see the Security guide.

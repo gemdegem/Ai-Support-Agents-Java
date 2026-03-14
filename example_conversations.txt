@@ -115,6 +115,40 @@ Assistant: To configure a webhook in the system, follow these steps:
 5. Click **Save** — the system will send a test event of type "ping".
 
 
+────────────────────────────────────────────────────────────────────────────────
+  CONVERSATION 4: General Greeting & Capabilities Query
+────────────────────────────────────────────────────────────────────────────────
+
+╔══════════════════════════════════════════════════════╗
+║          RAG Chatbot — Technical Assistant           ║
+║              & Billing Specialist                    ║
+╠══════════════════════════════════════════════════════╣
+║  Logged in as:     Anna Kowalska                     ║
+║  Customer ID:      C001                              ║
+╠══════════════════════════════════════════════════════╣
+║  Type your message and press Enter.                  ║
+║  Type 'exit' or 'quit' to terminate.                 ║
+╚══════════════════════════════════════════════════════╝
+
+Assistant: Hi! I am your virtual assistant. I can answer your technical questions or help you with billing and account details. How can I help you today?
+
+You: What can you help me with?
+Assistant is thinking...
+[Orchestrator] Router -> GENERAL
+Assistant: I can help you with two areas:
+
+1. **Technical support** — API configuration, troubleshooting errors (401, 403, 429, 500), webhooks, integrations (HubSpot, Zapier), security best practices, and data export.
+
+2. **Billing & account** — your current subscription plan and pricing, invoice and payment history, and submitting refund requests.
+
+Just ask your question and I'll route it to the right specialist!
+
+You: Tell me about the API
+Assistant is thinking...
+[Orchestrator] Router -> TECHNICAL
+Assistant: Our platform provides a comprehensive API-based service. The RESTful API (v2) is available at https://api.example.com/v2/ and uses Bearer token authentication. It supports managing users, data, and subscriptions. There are three subscription tiers: Free (100 requests/minute), Pro (1000 requests/minute), and Enterprise (10000 requests/minute). The API returns data in JSON format.
+
+
 ================================================================================
   END OF EXAMPLE CONVERSATIONS
 ================================================================================

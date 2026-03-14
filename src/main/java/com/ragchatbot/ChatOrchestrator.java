@@ -78,6 +78,10 @@ public class ChatOrchestrator {
                 response = billingAgent.handle(memory);
                 tag = "[Agent: Billing]";
             }
+            case GENERAL -> {
+                response = Router.GENERAL_MESSAGE;
+                tag = "[Agent: General]";
+            }
             default -> {
 
                 response = Router.FALLBACK_MESSAGE;

@@ -17,12 +17,24 @@ public class Router {
             software issues, errors, or settings.
             - BILLING — if the question is about payments, invoices, pricing plans, refunds, \
             subscriptions, or billing account.
+            - GENERAL — if the message is a greeting (e.g., "hello", "hi"), a meta-question about \
+            your capabilities (e.g., "what can you help me with?", "what do you do?"), \
+            or if it does not clearly belong to TECHNICAL or BILLING.
 
             Respond with ONLY one word. No extra characters, sentences, or explanations.""";
 
     public static final String FALLBACK_MESSAGE =
             "I'm sorry, but I can't help with that topic. " +
             "Please contact general support.";
+
+    public static final String GENERAL_MESSAGE =
+            "I can help you with two areas:\n\n" +
+            "1. **Technical support** — API configuration, troubleshooting errors " +
+            "(401, 403, 429, 500), webhooks, integrations (HubSpot, Zapier), " +
+            "security best practices, and data export.\n\n" +
+            "2. **Billing & account** — your current subscription plan and pricing, " +
+            "invoice and payment history, and submitting refund requests.\n\n" +
+            "Just ask your question and I'll route it to the right specialist!";
 
     private final LlmClient llmClient;
 
@@ -56,6 +68,7 @@ public class Router {
         return switch (cleaned) {
             case "TECHNICAL" -> RouteResult.TECHNICAL;
             case "BILLING"   -> RouteResult.BILLING;
+            case "GENERAL"   -> RouteResult.GENERAL;
             default          -> RouteResult.FALLBACK;
         };
     }

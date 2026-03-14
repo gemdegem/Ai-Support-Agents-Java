@@ -78,6 +78,22 @@ class RouterTest {
     }
 
     @Test
+    void testRoute_General_ReturnsCorrectResult() {
+        Router router = createRouterWithFixedResponse("GENERAL");
+        ConversationMemory memory = memoryWithUserMessage("What can you help me with?");
+
+        RouteResult result = router.route(memory);
+
+        assertEquals(RouteResult.GENERAL, result);
+    }
+
+    @Test
+    void testGeneralMessage_IsNotEmpty() {
+        assertNotNull(Router.GENERAL_MESSAGE);
+        assertFalse(Router.GENERAL_MESSAGE.isBlank());
+    }
+
+    @Test
     @EnabledIfEnvironmentVariable(named = "OPENAI_API_KEY", matches = ".+")
     void testClassify_IntegrationWithLlm() {
         LlmClient client = new LlmClient();
@@ -94,6 +110,12 @@ class RouterTest {
         System.out.println("Billing classification: '" + billResponse + "'");
         assertEquals("BILLING", billResponse.trim().toUpperCase(),
                 "Billing question should be classified as BILLING, received: " + billResponse);
+
+        ConversationMemory generalMemory = memoryWithUserMessage("What can you help me with?");
+        String generalResponse = router.classify(generalMemory);
+        System.out.println("General classification: '" + generalResponse + "'");
+        assertEquals("GENERAL", generalResponse.trim().toUpperCase(),
+                "Meta-question should be classified as GENERAL, received: " + generalResponse);
 
         ConversationMemory contextMemory = new ConversationMemory(8);
         contextMemory.addUserMessage("I have a database configuration problem.");

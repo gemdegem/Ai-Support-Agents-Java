@@ -28,17 +28,17 @@ User Input
          │
          ▼
 ┌────────────────────┐
-│      Router        │  LLM classifies intent → TECHNICAL / BILLING
+│      Router        │  LLM classifies intent → TECHNICAL / BILLING / GENERAL
 └────────┬───────────┘
          │
     ┌────┴────┐
     │  Java   │  Deterministic switch (hard fallback)
     │ switch  │
     └────┬────┘
-    ┌────┼────────────┐
-    ▼    ▼            ▼
-Agent A  Agent B   Fallback
- (RAG)  (Tools)   (static msg)
+    ┌────┼──────┼────────┐
+    ▼    ▼      ▼        ▼
+Agent A  Agent B  General  Fallback
+ (RAG)  (Tools)  (static)  (static)
 ```
 
 Key design principles:
@@ -95,7 +95,7 @@ src/main/java/com/ragchatbot/
 │   └── ConversationMemory.java # Sliding Window + role tagging
 ├── router/
 │   ├── Router.java            # Intent classifier (LLM-based)
-│   └── RouteResult.java       # Enum: TECHNICAL / BILLING / FALLBACK
+│   └── RouteResult.java       # Enum: TECHNICAL / BILLING / GENERAL / FALLBACK
 ├── rag/
 │   ├── DocumentLoader.java    # Loads docs from classpath, splits into chunks
 │   ├── KnowledgeBase.java     # In-memory vector store (text + embedding)
@@ -109,6 +109,7 @@ src/main/java/com/ragchatbot/
     └── UserSession.java       # Simulated logged-in user session
 
 src/main/resources/docs/       # Technical documentation for RAG
+├── system-overview.txt        # Platform overview, key capabilities, plans
 ├── api-setup.txt              # API configuration guide
 ├── troubleshooting.txt        # Troubleshooting FAQ
 ├── security-guide.txt         # Security best practices
@@ -121,6 +122,7 @@ The `src/main/resources/docs/` directory contains technical documentation used b
 
 | File | Content |
 |------|---------|
+| `system-overview.txt` | Platform overview, key capabilities, subscription plans |
 | `api-setup.txt` | API setup, authentication, rate limits, versioning |
 | `troubleshooting.txt` | Common errors (401, 403, 429, 500) and resolutions |
 | `security-guide.txt` | Key management, scopes, webhook security, attack protection |
