@@ -117,6 +117,12 @@ class RouterTest {
         assertEquals("GENERAL", generalResponse.trim().toUpperCase(),
                 "Meta-question should be classified as GENERAL, received: " + generalResponse);
 
+        ConversationMemory apiMemory = memoryWithUserMessage("Tell me about the API");
+        String apiResponse = router.classify(apiMemory);
+        System.out.println("API classification: '" + apiResponse + "'");
+        assertEquals("TECHNICAL", apiResponse.trim().toUpperCase(),
+                "API overview questions should be classified as TECHNICAL, received: " + apiResponse);
+
         ConversationMemory contextMemory = new ConversationMemory(8);
         contextMemory.addUserMessage("I have a database configuration problem.");
         contextMemory.addAssistantMessage("[Agent: Technical] Try checking the connection string.");

@@ -13,13 +13,12 @@ public class Router {
             in the user's most recent message.
 
             Respond with ONE word:
-            - TECHNICAL — if the question is about technical support, documentation, configuration, \
-            software issues, errors, or settings.
+            - TECHNICAL — if the question is about technical support, documentation, API, the platform, configuration, \
+            software issues, errors, or settings. All questions asking "how" or "what is the API" are TECHNICAL.
             - BILLING — if the question is about payments, invoices, pricing plans, refunds, \
             subscriptions, or billing account.
-            - GENERAL — if the message is a greeting (e.g., "hello", "hi"), a meta-question about \
-            your capabilities (e.g., "what can you help me with?", "what do you do?"), \
-            or if it does not clearly belong to TECHNICAL or BILLING.
+            - GENERAL — ONLY if the message is a direct greeting (e.g., "hello", "hi") or a meta-question about \
+            your capabilities (e.g., "what can you help me with?", "what do you do?"). Do NOT use GENERAL for anything else.
 
             Respond with ONLY one word. No extra characters, sentences, or explanations.""";
 
